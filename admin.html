@@ -136,10 +136,23 @@
                     availBtn.textContent = "Delete Vehicle";
                     delBtn.textContent = "Delete Vehicle";
                     const ol = confirm("are you sure to delete this vehicle?");
-                    
+                    if(!ok) return;
+                    fleets = fleets.filter((f) => f.id !== fleet.id);
+                    render();
 
-                }
-            }
+                });
+                card.appendChild(updateBtn);
+                card.appendChild(availBtn);
+                card.appendChild(delBtn);
+                cardsContainer.appendChild(card);
+            });
+        }
+        filterCategory.addEventListener("change",render);
+        filterAvail.addEventListener("change",render);
+        document.getElementById("clearfilter").addEventListener("click", ()) =>{
+            filterCategory.value = "ALL";
+            filterAvail.value = "ALL";
+        }
 
 
         </script>
