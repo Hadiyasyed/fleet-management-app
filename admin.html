@@ -108,6 +108,30 @@
                     let ok = true;
                     if(catFilter !== "All") ok = ok && f.category === catFilter;
                     if(avFilter !== "All") ok = ok && f.Available === avFilter;
+                    return ok;
+
+                });
+                filtered.forEach((fleet) => {
+                    const card = document.createElement("div");
+                    card.innerHTML='
+                    <img src ="${VEHICLE_IMG}" alt="vehicle"/>
+                    <p><b>Reg no:</b> ${fleet.regNo}</p>
+                    <p><b>Category:</b>$(fleet.Category)</p>
+                    <p><b>driver:</b> $(fleet.driver)</p>
+                    ';
+                    const updateBtn = document.createElement("button");
+                    updateBtn.textContent = "Update driver";
+                    updateBtn.addEventListener("click", function()){
+                        const newName = prompt("Enter new sriver name");
+                        if(!newName === null)return;
+                        if(!newName.trim()){
+                            alert("driver name cannot be empty");
+                            return;
+
+                        }
+                        fleet.driver = newName.trim();
+                        render();
+                    });
 
                 }
             }
