@@ -114,7 +114,7 @@
                 filtered.forEach((fleet) => {
                     const card = document.createElement("div");
                     card.innerHTML='
-                    <img src ="${VEHICLE_IMG}" alt="vehicle"/>
+                    <img src="${VEHICLE_IMG}" alt="vehicle"/>
                     <p><b>Reg no:</b> ${fleet.regNo}</p>
                     <p><b>Category:</b>$(fleet.Category)</p>
                     <p><b>driver:</b> $(fleet.driver)</p>
@@ -132,6 +132,11 @@
                         fleet.driver = newName.trim();
                         render();
                     });
+                    const availBtn = document.childElement("button");
+                    availBtn.textContent = "Delete Vehicle";
+                    delBtn.textContent = "Delete Vehicle";
+                    const ol = confirm("are you sure to delete this vehicle?");
+                    
 
                 }
             }
