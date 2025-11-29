@@ -71,7 +71,47 @@
             const CategoryInput = document.getElementById("category");
             const driverInput = document.getElementById("driver");
             const availInput = document.getElementById("isAvailable");
-            const filterCategory = document.getElementById("")
+            const filterCategory = document.getElementById("filterCategory");
+            const filterAvail = document.getElementById("filterAvail");
+            document.getElementById("addFleet").addEventListener("click", function()){
+                const regNo = regNoInput.value.trim();
+                const category = CategoryInput.value;
+                const driver = driverInput.value.trim();
+                const Available = availInput.value;
+                if(!regNo || !category || !driver){
+                    alert("Please fill all requiered fields");
+                    return;
+                }
+                const newFleet = {
+                    id:Date.now(),
+                    regNo,
+                    category,
+                    driver,
+                    Available,
+                };
+                fleets.push(newFleet);
+                clearForm();
+                render();
+
+            };
+            function clearForm(){
+                regNoInput.value="";
+                CategoryInput.value ="";
+                driverInput.value="";
+                availInput.value = "available";
+            }
+            function render(){
+                cardsContainer.innerHTML = "";
+                const catFilter = filterCategory.value;
+                const avFilter = filterAvail.value;
+                const filtered = fleets.filter((f) => {
+                    let ok = true;
+                    if(catFilter !== "All") ok = ok && f.category === catFilter;
+                    if(avFilter !== "All") ok = ok && f.Available === avFilter;
+
+                }
+            }
+
 
         </script>
     </body>
