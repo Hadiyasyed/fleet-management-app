@@ -14,7 +14,7 @@
             const password = "admin123";
             document.getElementById("loginBtn").addEventListener("click",function()){
                 const email=document.getElementById("email").value.trim();
-                const password = document.getElementById("password").value,trim();
+                const password = document.getElementById("password").value.trim();
                 if(email === email && password === password){
                     alert("Login successful");
                     window.location.href = "admin.html";
@@ -22,7 +22,7 @@
                     alert("wrong email or password");
                 }
                 
-            });
+            };
           </script>
 
     </body>
